@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: cabecera(${actividad.id == null ? 'Nueva actividad' : 'Editar actividad'})}"></head>
+<body>
+
+<header th:replace="~{fragmentos :: encabezado}"></header>
+
+<main class="contenedor">
+    <h1 th:text="${actividad.id == null} ? 'Nueva actividad' : 'Editar actividad'">Actividad</h1>
+
+    <p th:if="${error}" th:text="${error}" class="mensaje mensaje-error"></p>
+
+    <!-- th:object: el formulario trabaja sobre el objeto "actividad" del modelo.
+         th:field="*{nombre}": conecta el campo con actividad.nombre
+         (lo completa al editar y lo carga en el objeto al enviar). -->
+    <form th:action="@{/actividades/guardar}" th:object="${actividad}" method="post" class="formulario">
+
+        <!-- El id viaja oculto: si está vacío es un alta, si tiene valor es una modificación -->
+        <input type="hidden" th:field="*{id}">
+
+        <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" th:field="*{nombre}" required maxlength="120">
+        </div>
+
+        <div class="campo">
+            <label for="disciplina">Disciplina</label>
+            <input type="text" th:field="*{disciplina}" required maxlength="80">
+        </div>
+
+        <div class="campo">
+            <label for="profesor">Profesor/a</label>
+            <input type="text" th:field="*{profesor}" required maxlength="120">
+        </div>
+
+        <div class="fila">
+            <div class="campo">
+                <label for="dias">Días</label>
+                <input type="text" th:field="*{dias}" required placeholder="Ej.: Lunes y miércoles">
+            </div>
+            <div class="campo">
+                <label for="horario">Horario</label>
+                <input type="text" th:field="*{horario}" required placeholder="Ej.: 18:00">
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="campo">
+                <label for="edadMinima">Edad mínima</label>
+                <input type="number" th:field="*{edadMinima}" required min="0" max="120">
+            </div>
+            <div class="campo">
+                <label for="edadMaxima">Edad máxima</label>
+                <input type="number" th:field="*{edadMaxima}" required min="0" max="120">
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="campo">
+                <label for="cupoMaximo">Cupo máximo</label>
+                <input type="number" th:field="*{cupoMaximo}" required min="1">
+            </div>
+            <div class="campo">
+                <label for="cuotaMensual">Cuota mensual ($)</label>
+                <input type="number" th:field="*{cuotaMensual}" required min="0" step="1">
+            </div>
+        </div>
+
+        <div class="botones">
+            <button type="submit" class="boton">Guardar</button>
+            <a th:href="@{/actividades}" class="boton boton-secundario">Cancelar</a>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{fragmentos :: pie}"></footer>
+</body>
+</html>

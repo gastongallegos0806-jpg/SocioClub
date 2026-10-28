@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- Fragmentos reutilizables: se escriben UNA vez y se incluyen en todas
+     las pantallas con th:replace (como un include de PHP). -->
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="cabecera(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${titulo} + ' | Secretaría Los Algarrobos'">Secretaría</title>
+    <link rel="stylesheet" th:href="@{/css/secretaria.css}">
+</head>
+
+<body>
+
+<header th:fragment="encabezado" class="encabezado">
+    <a th:href="@{/actividades}" class="marca">Los Algarrobos</a>
+    <span class="subtitulo">Sistema de secretaría</span>
+    <nav aria-label="Menú de secretaría">
+        <a th:href="@{/actividades}">Actividades</a>
+    </nav>
+</header>
+
+<footer th:fragment="pie" class="pie">
+    <p>SocioClub: Club Social y Deportivo Los Algarrobos, Córdoba.</p>
+</footer>
+
+</body>
+</html>

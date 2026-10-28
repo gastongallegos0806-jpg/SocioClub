@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Actividades | Club Los Algarrobos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <a href="index.html" class="marca">
+      <img src="img/logo-algarrobos.svg" alt="Logo del Club Los Algarrobos: un algarrobo sobre fondo verde" width="44" height="44">
+      <span>Los Algarrobos</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="actividades.html" aria-current="page">Actividades</a></li>
+        <li><a href="preinscripcion.html">Preinscripción</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <button type="button" class="boton-volver">Volver</button>
+
+    <h1>Actividades del club</h1>
+    <p>Elegí una disciplina o escribí una edad para ver qué actividades te corresponden.</p>
+
+    <!-- Filtros: el JavaScript escucha los cambios y redibuja la lista -->
+    <section class="filtros" aria-label="Filtros del catálogo">
+      <div class="campo-filtro">
+        <label for="filtro-disciplina">Disciplina</label>
+        <!-- Las opciones de disciplina las agrega script.js a partir del arreglo de actividades -->
+        <select id="filtro-disciplina">
+          <option value="todas">Todas las disciplinas</option>
+        </select>
+      </div>
+      <div class="campo-filtro">
+        <label for="filtro-edad">Edad</label>
+        <input type="number" id="filtro-edad" min="3" max="99" placeholder="Ej.: 10">
+      </div>
+      <button type="button" id="boton-limpiar" class="boton boton-secundario">Limpiar filtros</button>
+    </section>
+
+    <p id="contador-resultados" class="contador" aria-live="polite"></p>
+
+    <div class="dos-columnas dos-columnas-catalogo">
+      <!-- Contenedor vacío: script.js crea acá una tarjeta (article) por cada actividad -->
+      <section id="lista-actividades" aria-label="Listado de actividades"></section>
+
+      <aside class="recuadro">
+        <h2>Descuentos por actividad</h2>
+        <p>Si hacés más de una actividad, la cuota total tiene descuento:</p>
+        <ul>
+          <li>2 actividades: 10 % menos</li>
+          <li>3 actividades: 15 % menos</li>
+        </ul>
+        <p>Cada socio puede anotarse en hasta 3 actividades.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Club Social y Deportivo Los Algarrobos, Córdoba, Argentina.</p>
+    <p>Teléfono de secretaría: (0351) 555-0100</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

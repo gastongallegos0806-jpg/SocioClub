@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <!-- meta viewport: hace que en el celular la página use el ancho real de la pantalla -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Club Social y Deportivo Los Algarrobos | Córdoba</title>
+  <meta name="description" content="Club de barrio de la zona norte de Córdoba. Actividades deportivas y recreativas para chicos y adultos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Única hoja de estilos externa del sitio -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- header: encabezado de la página (logo + menú) -->
+  <header class="encabezado">
+    <a href="index.html" class="marca">
+      <img src="img/logo-algarrobos.svg" alt="Logo del Club Los Algarrobos: un algarrobo sobre fondo verde" width="44" height="44">
+      <span>Los Algarrobos</span>
+    </a>
+    <!-- nav: navegación principal entre las páginas del sitio -->
+    <nav aria-label="Navegación principal">
+      <ul class="menu">
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="actividades.html">Actividades</a></li>
+        <li><a href="preinscripcion.html">Preinscripción</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- main: el contenido principal y único de esta página -->
+  <main>
+
+    <section class="portada">
+      <div class="contenedor">
+        <h1>Donde el deporte se convierte en comunidad</h1>
+        <p class="portada-texto">
+          Somos un club de barrio de la zona norte de Córdoba. Tenemos 8 actividades
+          para chicos y adultos, y más de 650 socios que ya son parte.
+        </p>
+        <div class="acciones">
+          <a href="actividades.html" class="boton boton-principal">Ver actividades y horarios</a>
+          <a href="preinscripcion.html" class="boton boton-secundario">Quiero preinscribirme</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="contenedor dos-columnas">
+
+      <!-- section: un bloque temático (la historia del club) -->
+      <section id="historia">
+        <h2>Nuestra historia</h2>
+        <p>
+          El club nació en 1968, cuando un grupo de vecinos se juntó bajo los algarrobos
+          de un terreno baldío para armar una cancha de fútbol para los chicos del barrio.
+          Con rifas, peñas y mucho trabajo voluntario se levantó el primer salón.
+        </p>
+        <p>
+          Hoy tenemos pileta, salón cubierto y cancha, y seguimos con la misma idea:
+          que cualquier vecino, de cualquier edad, tenga un lugar para hacer deporte y compartir.
+        </p>
+
+        <h2>Qué vas a encontrar</h2>
+        <ul class="lista-beneficios">
+          <li><strong>Para todas las edades:</strong> desde los 5 años hasta los mayores.</li>
+          <li><strong>Profes que acompañan:</strong> cada actividad tiene su profesor o profesora a cargo.</li>
+          <li><strong>Cuotas accesibles:</strong> y descuentos si hacés más de una actividad.</li>
+        </ul>
+      </section>
+
+      <!-- aside: información complementaria al contenido principal -->
+      <aside class="recuadro">
+        <h2>Visitanos</h2>
+        <p><strong>Dirección:</strong> Av. de los Algarrobos 1450, zona norte, Córdoba.</p>
+        <h3>Horario de secretaría</h3>
+        <ul>
+          <li>Lunes a viernes de 9 a 13 y de 16 a 21</li>
+          <li>Sábados de 9 a 13</li>
+        </ul>
+        <p>En secretaría te atiende Marta para inscripciones y pago de cuotas.</p>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- footer: pie de página -->
+  <footer class="pie">
+    <p>Club Social y Deportivo Los Algarrobos, Córdoba, Argentina.</p>
+    <p>Teléfono de secretaría: (0351) 555-0100</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

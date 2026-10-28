@@ -1,0 +1,392 @@
+/* =========================================================
+   estilos.css: única hoja de estilos del sitio público
+   ========================================================= */
+
+/* Variables de color (se usan con var(--nombre)) */
+:root {
+  --verde: #123d32;
+  --verde-claro: #7fb069;
+  --tierra: #c9a36b;
+  --fondo: #f6f4ee;
+  --texto: #1b2925;
+  --gris: #5f6b66;
+  --borde: #dcd8cc;
+  --error: #b3261e;
+  --exito: #17805e;
+}
+
+/* ---------- Selectores de TIPO (eligen por etiqueta) ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: "Barlow", system-ui, Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  line-height: 1.15;
+  color: var(--verde);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  margin: 0.5rem 0 1rem;
+}
+
+a {
+  color: var(--verde);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ---------- Selectores de CLASE (reutilizables en muchos elementos) ---------- */
+
+.contenedor {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--verde);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #e7efe9;
+  text-decoration: none;
+  font-weight: 600;
+  padding-bottom: 0.2rem;
+}
+
+.portada {
+  background: var(--verde);
+  color: #e7efe9;
+  padding: 3rem 0 3.5rem;
+  border-bottom: 0.5rem solid var(--tierra);
+}
+
+.portada h1 {
+  color: #fff;
+  max-width: 18ch;
+}
+
+.portada-texto {
+  max-width: 40rem;
+  font-size: 1.2rem;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton-principal {
+  background: var(--tierra);
+  color: var(--verde);
+}
+
+.boton-secundario {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+
+.boton-volver {
+  margin-top: 1.25rem;
+  background: none;
+  border: none;
+  color: var(--verde);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+  padding: 2rem 0;
+  align-items: start;
+}
+
+.dos-columnas-catalogo {
+  grid-template-columns: 3fr 1fr;
+  padding-top: 0.5rem;
+}
+
+.recuadro {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-left: 0.4rem solid var(--verde-claro);
+  padding: 1rem 1.25rem;
+}
+
+.lista-beneficios li {
+  margin-bottom: 0.4rem;
+}
+
+/* Filtros del catálogo */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.campo-filtro label {
+  display: block;
+  font-weight: 600;
+}
+
+.campo-filtro select,
+.campo-filtro input {
+  font: inherit;
+  padding: 0.5rem;
+  border: 1px solid var(--borde);
+  border-radius: 0.4rem;
+  min-width: 12rem;
+}
+
+.contador {
+  color: var(--gris);
+}
+
+/* Tarjeta de actividad: la misma clase se repite en las 8 tarjetas */
+.tarjeta {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.tarjeta-horario {
+  background: var(--verde);
+  color: #fff;
+  padding: 0.75rem 1rem;
+}
+
+.tarjeta-hora {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.tarjeta-dias {
+  color: #cfe0d4;
+}
+
+.tarjeta-cuerpo {
+  padding: 0.75rem 1rem;
+}
+
+.tarjeta-cuerpo h3 {
+  margin: 0 0 0.25rem;
+}
+
+.tarjeta-disciplina {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--verde);
+  background: #e5efe0;
+  padding: 0.1rem 0.5rem;
+  border-radius: 1rem;
+}
+
+.tarjeta-datos {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--gris);
+}
+
+.tarjeta-pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--borde);
+}
+
+.tarjeta-cuota {
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.sin-resultados {
+  grid-column: 1 / -1;
+  background: #fff;
+  border: 1px dashed var(--borde);
+  padding: 1.5rem;
+}
+
+/* Formulario de preinscripción */
+.campo {
+  margin-bottom: 1rem;
+}
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  max-width: 28rem;
+  font: inherit;
+  padding: 0.6rem;
+  border: 1px solid var(--borde);
+  border-radius: 0.4rem;
+  background: #fff;
+}
+
+.error {
+  display: block;
+  min-height: 1.2em;
+  color: var(--error);
+  font-size: 0.95rem;
+}
+
+.mensaje-exito {
+  background: #e3f3ec;
+  border-left: 0.4rem solid var(--exito);
+  padding: 1rem;
+}
+
+.pie {
+  background: var(--verde);
+  color: #cfe0d4;
+  text-align: center;
+  padding: 1.25rem;
+  margin-top: 2rem;
+}
+
+.pie p {
+  margin: 0.25rem 0;
+}
+
+/* ---------- Selector de ID (un único elemento en la página) ---------- */
+
+/* El contenedor del catálogo: JavaScript lo busca por este id para dibujar las tarjetas */
+#lista-actividades {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+#historia h2:first-child {
+  margin-top: 0;
+}
+
+/* ---------- Selectores de ATRIBUTO (eligen por un atributo del HTML) ---------- */
+
+/* Marca en el menú la página en la que está el usuario */
+.menu a[aria-current="page"] {
+  color: #fff;
+  border-bottom: 3px solid var(--tierra);
+}
+
+/* Campos marcados como inválidos: script.js les pone aria-invalid="true" */
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: var(--error);
+  background-color: #fdf1f0;
+}
+
+/* Foco visible para quienes navegan con teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--tierra);
+  outline-offset: 2px;
+}
+
+/* ---------- Diseño responsivo ---------- */
+
+/* Tablets: dos tarjetas por fila */
+@media (max-width: 1024px) {
+  #lista-actividades {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celulares: todo en una columna (tarjetas, aside y menú) */
+@media (max-width: 768px) {
+  #lista-actividades,
+  .dos-columnas,
+  .dos-columnas-catalogo {
+    grid-template-columns: 1fr;
+  }
+
+  .encabezado {
+    justify-content: center;
+  }
+
+  .menu {
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .campo-filtro,
+  .campo-filtro select,
+  .campo-filtro input {
+    width: 100%;
+  }
+}

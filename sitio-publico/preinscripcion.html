@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preinscripción | Club Los Algarrobos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <a href="index.html" class="marca">
+      <img src="img/logo-algarrobos.svg" alt="Logo del Club Los Algarrobos: un algarrobo sobre fondo verde" width="44" height="44">
+      <span>Los Algarrobos</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="actividades.html">Actividades</a></li>
+        <li><a href="preinscripcion.html" aria-current="page">Preinscripción</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <button type="button" class="boton-volver">Volver</button>
+
+    <h1>Preinscripción</h1>
+
+    <div class="dos-columnas">
+      <section>
+        <p>Completá tus datos y la secretaría se va a comunicar con vos para terminar la inscripción.</p>
+
+        <!--
+          novalidate: desactiva la validación automática del navegador,
+          porque la validación la hacemos nosotros en script.js y mostramos
+          los errores al lado de cada campo (sin alert).
+        -->
+        <form id="form-preinscripcion" novalidate>
+
+          <div class="campo">
+            <label for="nombre">Nombre *</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="given-name">
+            <span class="error" id="error-nombre"></span>
+          </div>
+
+          <div class="campo">
+            <label for="apellido">Apellido *</label>
+            <input type="text" id="apellido" name="apellido" autocomplete="family-name">
+            <span class="error" id="error-apellido"></span>
+          </div>
+
+          <div class="campo">
+            <label for="dni">DNI (sin puntos) *</label>
+            <input type="text" id="dni" name="dni" inputmode="numeric" placeholder="Ej.: 40123456">
+            <span class="error" id="error-dni"></span>
+          </div>
+
+          <div class="campo">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+            <span class="error" id="error-email"></span>
+          </div>
+
+          <div class="campo">
+            <label for="telefono">Teléfono (opcional)</label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+            <span class="error" id="error-telefono"></span>
+          </div>
+
+          <div class="campo">
+            <label for="actividad">Actividad que te interesa *</label>
+            <!-- Las opciones las carga script.js desde el mismo arreglo del catálogo -->
+            <select id="actividad" name="actividad">
+              <option value="">Elegí una actividad</option>
+            </select>
+            <span class="error" id="error-actividad"></span>
+          </div>
+
+          <button type="submit" class="boton boton-principal">Enviar preinscripción</button>
+        </form>
+
+        <!-- Mensaje de confirmación: queda oculto hasta que el formulario es válido -->
+        <p id="mensaje-exito" class="mensaje-exito" role="status" hidden></p>
+      </section>
+
+      <aside class="recuadro">
+        <h2>¿Cómo sigue?</h2>
+        <ol>
+          <li>Recibimos tu preinscripción.</li>
+          <li>Marta, de secretaría, te contacta para confirmar los datos.</li>
+          <li>Pasás por el club a completar el alta y empezás la actividad.</li>
+        </ol>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Club Social y Deportivo Los Algarrobos, Córdoba, Argentina.</p>
+    <p>Teléfono de secretaría: (0351) 555-0100</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

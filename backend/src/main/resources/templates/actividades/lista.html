@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+<!-- Cabecera común, con el título de esta pantalla como parámetro -->
+<head th:replace="~{fragmentos :: cabecera('Actividades')}"></head>
+<body>
+
+<header th:replace="~{fragmentos :: encabezado}"></header>
+
+<main class="contenedor">
+    <div class="titulo-con-accion">
+        <h1>Actividades</h1>
+        <a th:href="@{/actividades/nueva}" class="boton">Nueva actividad</a>
+    </div>
+
+    <!-- Mensajes: th:if muestra el elemento solo si la condición se cumple -->
+    <p th:if="${exito}" th:text="${exito}" class="mensaje mensaje-exito"></p>
+    <p th:if="${error}" th:text="${error}" class="mensaje mensaje-error"></p>
+
+    <!-- Filtro por disciplina: un formulario GET que recarga la página con ?disciplina=... -->
+    <form th:action="@{/actividades}" method="get" class="filtro">
+        <label for="disciplina">Disciplina</label>
+        <select id="disciplina" name="disciplina">
+            <option value="">Todas</option>
+            <!-- th:each: recorre la lista, como un foreach -->
+            <option th:each="d : ${disciplinas}"
+                    th:value="${d}" th:text="${d}"
+                    th:selected="${d == disciplinaElegida}">Disciplina</option>
+        </select>
+        <button type="submit" class="boton boton-secundario">Filtrar</button>
+    </form>
+
+    <p th:if="${#lists.isEmpty(actividades)}">No hay actividades cargadas para ese filtro.</p>
+
+    <div class="tabla-contenedor" th:unless="${#lists.isEmpty(actividades)}">
+        <table>
+            <thead>
+            <tr>
+                <th>Actividad</th>
+                <th>Disciplina</th>
+                <th>Días y horario</th>
+                <th>Edades</th>
+                <th>Profesor/a</th>
+                <th>Cuota</th>
+                <th>Cupo disponible</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Una fila por cada actividad -->
+            <tr th:each="a : ${actividades}">
+                <td th:text="${a.nombre}">Fútbol infantil</td>
+                <td th:text="${a.disciplina}">Fútbol</td>
+                <td th:text="${a.dias + ' ' + a.horario}">Lunes 18:00</td>
+                <td th:text="${a.edadMinima + ' a ' + a.edadMaxima}">6 a 12</td>
+                <td th:text="${a.profesor}">Profesor</td>
+                <td th:text="${'$ ' + #numbers.formatDecimal(a.cuotaMensual, 1, 'POINT', 0, 'COMMA')}">$ 18.000</td>
+                <!-- th:classappend: agrega una clase CSS si queda poco o nada de cupo -->
+                <td th:classappend="${a.cupoDisponible == 0 ? 'cupo-agotado' : (a.cupoDisponible le 3 ? 'cupo-bajo' : '')}"
+                    th:text="${a.cupoDisponible + ' de ' + a.cupoMaximo}">10 de 40</td>
+                <td class="acciones">
+                    <a th:href="@{/actividades/{id}/editar(id=${a.id})}">Editar</a>
+                    <form th:action="@{/actividades/{id}/eliminar(id=${a.id})}" method="post"
+                          onsubmit="return confirm('¿Seguro que querés eliminar esta actividad?');">
+                        <button type="submit" class="boton-enlace">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer th:replace="~{fragmentos :: pie}"></footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Backend (Maven)
+backend/target/
+# Editores
+.idea/
+.vscode/
+*.iml
+# Sistema
+.DS_Store
+Thumbs.db
+# React (Parte D)
+node_modules/
